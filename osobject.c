@@ -2,6 +2,7 @@
 #import "kexecute.h"
 #import "kernel_utils.h"
 #import "patchfinder64.h"
+#include "kernel_call.h"
 #import "osobject.h"
 
 // offsets in vtable:
@@ -29,7 +30,8 @@ int OSDictionary_SetItem(uint64_t dict, const char *key, uint64_t val) {
     uint64_t vtab = KernelRead_64bits(dict);
     uint64_t f = KernelRead_64bits(vtab + off_OSDictionary_SetObjectWithCharP);
     
-    int rv = (int) Kernel_Execute(f, dict, ks, val, 0, 0, 0, 0);
+//    int rv = (int) Kernel_Execute(f, dict, ks, val, 0, 0, 0, 0);
+    int rv = (int) kernel_call_7(f, 3, dict, ks, val);
     
     Kernel_free(ks, len);
     
@@ -50,7 +52,8 @@ uint64_t _OSDictionary_GetItem(uint64_t dict, const char *key) {
     uint64_t vtab = KernelRead_64bits(dict);
     uint64_t f = KernelRead_64bits(vtab + off_OSDictionary_GetObjectWithCharP);
     
-    int rv = (int) Kernel_Execute(f, dict, ks, 0, 0, 0, 0, 0);
+//    int rv = (int) Kernel_Execute(f, dict, ks, 0, 0, 0, 0, 0);
+    int rv = (int) kernel_call_7(f, 2, dict, ks);
     
     Kernel_free(ks, len);
     

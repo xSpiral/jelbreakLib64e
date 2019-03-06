@@ -32,9 +32,7 @@ int vnode_lookup(const char *path, int flags, uint64_t *vnode, uint64_t vfs_cont
     
     if (!_vnode_lookup) _vnode_lookup = Find_vnode_lookup();
     else _vnode_lookup += KASLR_Slide;
-    
-    printf("Got to execution on the kernel\n");
-    
+        
     if (kernel_call_7(_vnode_lookup, 4, ptr2, flags, ptr, vfs_context)){
         printf("Error on vnode lookup\n");
         return -1;

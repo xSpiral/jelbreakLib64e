@@ -41,3 +41,4 @@ Library with commonly used patches in open-source jailbreaks. Call this a (light
 - The rest of patches are fairly simple and shouldn't be considered property of anyone in my opinion. Everyone who has enough knowledge can write them fairly easily
 
 And, don't forget to tell me if I forgot to credit anyone!
+# jelbreakLib64e
