@@ -989,9 +989,9 @@ addr_t Find_vnode_put(void) {
 addr_t Find_trustcache(void) {
     addr_t call, func, ref;
     
-    ref = Find_strref("%s: only allowed process can check the trust cache", 1, 1, false);
+    ref = Find_strref("%s: trust cache already loaded, ignoring", 2, 0, false);
     if (!ref) {
-        ref = Find_strref("%s: only allowed process can check the trust cache", 1, 0, false);
+        ref = Find_strref("%s: trust cache already loaded, ignoring", 1, 0, false);
         if (!ref) {
             return 0;
         }
