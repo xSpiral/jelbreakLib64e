@@ -425,10 +425,7 @@ stage1_get_kernel_buffer() {
 
 uint32_t
 stage1_kernel_call_7v(uint64_t function, size_t argument_count, const uint64_t arguments[]) {
-	assert(function != 0);
-	assert(argument_count <= 7);
-	assert(argument_count == 0 || arguments[0] != 0);
-	assert(MACH_PORT_VALID(connection) && trap != 0);
+	
 	// Get exactly 7 arguments. Initialize args[0] to 1 in case there are no arguments.
 	uint64_t args[7] = { 1 };
 	for (size_t i = 0; i < argument_count && i < 7; i++) {
